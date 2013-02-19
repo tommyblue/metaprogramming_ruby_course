@@ -1,4 +1,4 @@
-class A
+catcher = class A
   def initialize
     @a = 11
     @@a = 22
@@ -9,11 +9,9 @@ class A
   a = 3
 end
 
-A.class_eval { @a }
-# => 1
-
-A.new.instance_eval { @a }
-# => 11
-
-A.send(:class_variable_get, :@@a)
-# => 22
+puts A.class_eval { @a }
+puts A.class_variable_get :@@a
+puts catcher
+puts A.new.instance_eval { @a }
+puts A.class_variable_get :@@a
+puts A.new.send :initialize
